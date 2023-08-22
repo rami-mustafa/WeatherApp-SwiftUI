@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		38031D9D2A8824150043E6AA /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38031D9C2A8824150043E6AA /* TabBar.swift */; };
+		384EDC142A8BE60500F12CB4 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384EDC132A8BE60500F12CB4 /* Shapes.swift */; };
+		384FF5FB2A953D4B00189F52 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 384FF5FA2A953D4B00189F52 /* BottomSheet */; };
 		38D88D342A799935007CE1CD /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D88D332A799935007CE1CD /* WeatherAppApp.swift */; };
 		38D88D362A799935007CE1CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D88D352A799935007CE1CD /* ContentView.swift */; };
 		38D88D382A799936007CE1CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38D88D372A799936007CE1CD /* Assets.xcassets */; };
@@ -18,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		38031D9C2A8824150043E6AA /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		384EDC132A8BE60500F12CB4 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		38D88D302A799935007CE1CD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D88D332A799935007CE1CD /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		38D88D352A799935007CE1CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384FF5FB2A953D4B00189F52 /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				38F13DC62A7C3C5B004EC74F /* Extensions.swift */,
+				384EDC132A8BE60500F12CB4 /* Shapes.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -148,6 +153,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				384FF5FA2A953D4B00189F52 /* BottomSheet */,
+			);
 			productName = WeatherApp;
 			productReference = 38D88D302A799935007CE1CD /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 38D88D272A799935007CE1CD;
+			packageReferences = (
+				384FF5F92A953D4B00189F52 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+			);
 			productRefGroup = 38D88D312A799935007CE1CD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,6 +218,7 @@
 				38F13DC72A7C3C5B004EC74F /* Extensions.swift in Sources */,
 				38D88D342A799935007CE1CD /* WeatherAppApp.swift in Sources */,
 				38031D9D2A8824150043E6AA /* TabBar.swift in Sources */,
+				384EDC142A8BE60500F12CB4 /* Shapes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		384FF5F92A953D4B00189F52 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		384FF5FA2A953D4B00189F52 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 384FF5F92A953D4B00189F52 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 38D88D282A799935007CE1CD /* Project object */;
 }

@@ -25,20 +25,19 @@ struct HomeView: View {
                 Image("House")
                     .frame(maxHeight: .infinity , alignment:  .top)
                     .padding(.top, 257)
-
+                
                 
                 VStack{
                     Text("Montreal")
                         .font(.largeTitle)
                     
                     VStack{
-
                         
                         Text(attributedString)
-
+                        
                         Text("H:24  L: 21")
                             .font(.title3.weight(.semibold))
-
+                        
                     }
                     Spacer()
                 }
@@ -48,6 +47,7 @@ struct HomeView: View {
                 // MARK: Tab Bar
                 TabBar(action: {})
             }
+            .navigationBarHidden(true)
         }
     }
     
