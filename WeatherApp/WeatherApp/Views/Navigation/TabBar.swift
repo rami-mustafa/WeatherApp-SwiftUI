@@ -13,6 +13,13 @@ struct TabBar: View {
     
     var body: some View {
         ZStack {
+            
+            
+            // MARK: Arc Shape
+            Arc()
+                .fill(Color.tabBarBackground)
+                .frame(height: 88)
+            
             // MARK: Tab Items
             HStack {
                 // MARK: Expand Button
@@ -31,7 +38,6 @@ struct TabBar: View {
                 } label: {
                     Image(systemName: "list.star")
                         .frame(width: 44, height:  44)
-                        .background(.red)
 
                 }
             }
