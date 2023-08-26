@@ -6,8 +6,21 @@
 //
 
 import SwiftUI
+import BottomSheet
+
+
+enum BottomSheetPosition: CGFloat, CaseIterable {
+    case top = 0.83 // 702/844
+    case middle = 0.385 // 325/844
+}
+
 
 struct HomeView: View {
+    
+    @State var bottomSheetPosition: BottomSheetPosition = .middle
+    @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
+    @State var hasDragged: Bool = false
+    
     var body: some View {
         
         NavigationView {
@@ -43,7 +56,23 @@ struct HomeView: View {
                 }
                 .padding(.top , 51)
                 
-                
+                // MARK: Bottom Sheet
+                BottomSheetView(position: $bottomSheetPosition) {
+                    // Text(bottomSheetTranslationProrated.formatted())
+                } content: {
+
+                }
+                .onBottomSheetDrag { translation in
+                    bottomSheetTranslation = translation / screenHeight
+                    
+                    withAnimation(.easeInOut) {
+                        if bottomSheetPosition == BottomSheetPosition.top {
+                            hasDragged = true
+                        } else {
+                            hasDragged = false
+                        }
+                    }
+                }
                 // MARK: Tab Bar
                 TabBar(action: {})
             }
