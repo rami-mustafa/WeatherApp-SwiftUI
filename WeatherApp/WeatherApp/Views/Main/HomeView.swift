@@ -9,17 +9,17 @@ import SwiftUI
 import BottomSheet
 
 
-enum BottomSheetPosition: CGFloat, CaseIterable {
-    case top = 0.83 // 702/844
-    case middle = 0.385 // 325/844
-}
+//enum BottomSheetPosition: CGFloat, CaseIterable {
+//    case top = 0.83 // 702/844
+//    case middle = 0.385 // 325/844
+//    case relative = 0.4
+//}
 
 
 struct HomeView: View {
     
-    @State var bottomSheetPosition: BottomSheetPosition = .middle
-    @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
-    @State var hasDragged: Bool = false
+    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
+    @State var searchText: String = ""
     
     var body: some View {
         
@@ -57,27 +57,27 @@ struct HomeView: View {
                 .padding(.top , 51)
                 
                 // MARK: Bottom Sheet
-                BottomSheetView(position: $bottomSheetPosition) {
-                    // Text(bottomSheetTranslationProrated.formatted())
-                } content: {
+                .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition,
+                    switchablePositions: [
+                    .relativeBottom(0.125),
+                    .relative(0.4),
+                    .relativeTop(0.83)
+                ]){
+                    //The list of nouns that will be filtered by the searchText.
+                    ForecastView()
 
                 }
-                .onBottomSheetDrag { translation in
-                    bottomSheetTranslation = translation / screenHeight
-                    
-                    withAnimation(.easeInOut) {
-                        if bottomSheetPosition == BottomSheetPosition.top {
-                            hasDragged = true
-                        } else {
-                            hasDragged = false
-                        }
-                    }
-                }
+
                 // MARK: Tab Bar
-                TabBar(action: {})
+                TabBar(action: {
+                    bottomSheetPosition = .dynamicTop
+                })
             }
             .navigationBarHidden(true)
+            
         }
+
+       
     }
     
     private var attributedString: AttributedString {
@@ -108,3 +108,6 @@ struct HomeView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+
+
+
