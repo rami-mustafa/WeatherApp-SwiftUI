@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  WeatherApp
-//
-//  Created by Ghaiath Alhereh on 01.08.23.
-//
+
 
 import SwiftUI
 

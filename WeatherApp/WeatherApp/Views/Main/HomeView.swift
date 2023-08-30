@@ -1,9 +1,4 @@
-//
-//  HomeView.swift
-//  WeatherApp
-//
-//  Created by Ghaiath Alhereh on 03.08.23.
-//
+
 
 import SwiftUI
 import BottomSheet
