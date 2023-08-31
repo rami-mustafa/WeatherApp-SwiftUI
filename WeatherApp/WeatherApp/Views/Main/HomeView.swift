@@ -53,26 +53,35 @@ struct HomeView: View {
                 
                 // MARK: Bottom Sheet
                 .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition,
-                    switchablePositions: [
-                    .relativeBottom(0.125),
-                    .relative(0.4),
-                    .relativeTop(0.83)
-                ]){
+                             switchablePositions: [
+                                .relativeBottom(0.125),
+                                //                    .relative(0.4),
+                                .relativeTop(0.83)
+                                
+                             ]
+                ){
                     //The list of nouns that will be filtered by the searchText.
                     ForecastView()
-
+                    
                 }
+                .customAnimation(.linear.speed(0.4))
+                .backgroundBlur(radius: 25, opaque: true)
+                .background(Color.bottomSheetBackground)
+                
+            
 
+                
+                
+                
+                
                 // MARK: Tab Bar
-                TabBar(action: {
-                    bottomSheetPosition = .dynamicTop
-                })
+                TabBar(action: {})
             }
             .navigationBarHidden(true)
             
         }
-
-       
+        
+        
     }
     
     private var attributedString: AttributedString {
