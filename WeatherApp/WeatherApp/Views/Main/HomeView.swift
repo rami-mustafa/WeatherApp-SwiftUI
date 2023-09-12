@@ -14,70 +14,75 @@ import BottomSheet
 struct HomeView: View {
     
     @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
-    @State var searchText: String = ""
     
     var body: some View {
         
         NavigationView {
-            ZStack{
-                // MARK: Background Color
-                Color.background
-                    .ignoresSafeArea() // To make full screen
-                
-                // MARK: Background Image
-                Image("Background")
-                    .resizable()
-                    .ignoresSafeArea() // To make full screen
-                
-                // MARK: House Image
-                Image("House")
-                    .frame(maxHeight: .infinity , alignment:  .top)
-                    .padding(.top, 257)
-                
-                
-                VStack{
-                    Text("Montreal")
-                        .font(.largeTitle)
+            GeometryReader { geometry in
+                let screenHeight = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
+                let imageOffset = screenHeight + 36
+                ZStack{
+                    // MARK: Background Color
+                    Color.background
+                        .ignoresSafeArea() // To make full screen
+                    
+                    // MARK: Background Image
+                    Image("Background")
+                        .resizable()
+                        .ignoresSafeArea() // To make full screen
+                    
+                    // MARK: House Image
+                    Image("House")
+                        .frame(maxHeight: .infinity , alignment:  .top)
+                        .padding(.top, 257)
+                    
                     
                     VStack{
+                        Text("Montreal")
+                            .font(.largeTitle)
                         
-                        Text(attributedString)
-                        
-                        Text("H:24  L: 21")
-                            .font(.title3.weight(.semibold))
+                        VStack{
+                            
+                            Text(attributedString)
+                            
+                            Text("H:24  L: 21")
+                                .font(.title3.weight(.semibold))
+                            
+                        }
+                        Spacer()
+                    }
+                    .padding(.top , 51)
+                    
+                    // MARK: Bottom Sheet
+                    
+                    
+                    .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition,
+                                 switchablePositions: [
+                                    .relativeBottom(0.125),
+                                    //                    .relative(0.4),
+                                    .relativeTop(0.83)
+                                    
+                                 ]
+                    ){
+                        //The list of nouns that will be filtered by the searchText.
+                        ForecastView()
                         
                     }
-                    Spacer()
-                }
-                .padding(.top , 51)
-                
-                // MARK: Bottom Sheet
-                .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition,
-                             switchablePositions: [
-                                .relativeBottom(0.125),
-                                //                    .relative(0.4),
-                                .relativeTop(0.83)
-                                
-                             ]
-                ){
-                    //The list of nouns that will be filtered by the searchText.
-                    ForecastView()
+                    .customAnimation(.linear.speed(0.4))
+                    .backgroundBlur(radius: 25, opaque: true)
+                    .background(Color.bottomSheetBackground)
                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    // MARK: Tab Bar
+                    TabBar(action: {})
                 }
-                .customAnimation(.linear.speed(0.4))
-                .backgroundBlur(radius: 25, opaque: true)
-                .background(Color.bottomSheetBackground)
-                
-            
-
-                
-                
-                
-                
-                // MARK: Tab Bar
-                TabBar(action: {})
+                .navigationBarHidden(true)
             }
-            .navigationBarHidden(true)
             
         }
         
